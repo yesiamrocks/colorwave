@@ -1,0 +1,45 @@
+{
+  "name": "colorwave",
+  "version": "1.0.0",
+  "description": "A lightweight CSS library for creating animated gradient backgrounds with ease.",
+  "style": "dist/colorwave.css",
+  "type": "commonjs",
+  "scripts": {
+    "lint:css": "stylelint '**/*.css'",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "gradient",
+    "animation",
+    "background",
+    "ui",
+    "css",
+    "web-design",
+    "colorwave",
+    "animated-gradient"
+  ],
+  "author": "Shafayetul Islam Pavel",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/yesiamrocks/colorwave",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yesiamrocks/colorwave.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yesiamrocks/colorwave/issues"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "stylelint": "^16.22.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "prettier": "^3.2.5"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
+}

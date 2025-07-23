@@ -1,122 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Animated Gradient Library Demo</title>
-        <link rel="stylesheet" href="../src/gradient-styles.css">
-        <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8f8f8; /* A subtle background for contrast */
-        }
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Colorwave.js Live Demo</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="../src/colorwave.css">
 
-        .gradient-container {
-            width: 90%;
-            max-width: 600px;
-            height: 250px;
-            margin: 20px auto;
-            border-radius: 12px;
-            overflow: hidden; /* Important for gradient to stay within bounds */
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8em;
-            font-weight: bold;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease; /* Smooth hover effect */
-        }
-
-        .gradient-container:hover {
-            transform: translateY(-5px);
-        }
-
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-        }
-
-        p {
-            color: #666;
-            margin-top: 5px;
-            font-size: 0.9em;
-        }
-    </style>
     </head>
-    <body>
-        <h1>My Awesome Website</h1>
-        <p>Powered by the Animated Gradient Library</p>
+    <body
+        class="bg-gray-900 text-white font-sans h-screen flex flex-col transition-colors duration-300 dark-mode">
+        <!-- Header -->
+        <header
+            class="bg-gray-800 px-6 py-4 flex justify-between items-center border-b border-gray-700 sticky top-0 z-10 shadow-md">
+            <div class="text-xl font-bold text-cyan-400">Colorwave.js</div>
+            <nav class="flex items-center space-x-6 text-sm">
+                <a href="#"
+                    class="hover:text-cyan-300 text-gray-300 transition-colors duration-200"
+                    aria-label="Documentation">Docs</a>
+                <a href="#"
+                    class="hover:text-cyan-300 text-gray-300 transition-colors duration-200"
+                    aria-label="GitHub Repository">GitHub</a>
+                <a href="#"
+                    class="hover:text-cyan-300 text-gray-300 transition-colors duration-200"
+                    aria-label="About Colorwave.js">About</a>
+                <button id="theme-toggle"
+                    class="text-gray-300 hover:text-cyan-300 focus:outline-none"
+                    aria-label="Toggle dark/light mode">
+                    <svg class="w-5 h-5" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                    </svg>
+                </button>
+            </nav>
+        </header>
 
-        <div
-            class="animated-gradient-base gradient-container gradient-sunrise">
-            Awesome Hero Section
+        <!-- Main Layout -->
+        <div class="flex flex-1 overflow-hidden">
+            <!-- Sidebar Tabs -->
+            <aside
+                class="w-64 bg-gray-800 p-6 border-r border-gray-700 flex-shrink-0">
+                <h2 class="text-lg font-semibold mb-4 text-cyan-400">Gradient
+                    Categories</h2>
+                <div class="flex flex-col gap-2">
+                    <button
+                        class="tab-btn active bg-gray-700 text-white px-4 py-2 rounded-lg text-left text-sm font-medium transition-colors duration-200 hover:bg-cyan-600"
+                        data-tab="wow" aria-label="WOW Gradients">WOW</button>
+                    <button
+                        class="tab-btn px-4 py-2 rounded-lg text-left text-sm text-gray-300 hover:bg-cyan-600 transition-colors duration-200"
+                        data-tab="hud" aria-label="HUD Gradients">HUD</button>
+                    <button
+                        class="tab-btn px-4 py-2 rounded-lg text-left text-sm text-gray-300 hover:bg-cyan-600 transition-colors duration-200"
+                        data-tab="magic"
+                        aria-label="Magic Gradients">Magic</button>
+                    <button
+                        class="tab-btn px-4 py-2 rounded-lg text-left text-sm text-gray-300 hover:bg-cyan-600 transition-colors duration-200"
+                        data-tab="retro"
+                        aria-label="Retro Gradients">Retro</button>
+                    <button
+                        class="tab-btn px-4 py-2 rounded-lg text-left text-sm text-gray-300 hover:bg-cyan-600 transition-colors duration-200"
+                        data-tab="cyberpunk"
+                        aria-label="Cyberpunk Gradients">Cyberpunk</button>
+                </div>
+            </aside>
+
+            <!-- Content Panel -->
+            <main class="flex-1 overflow-y-auto p-8">
+                <!-- WOW TAB -->
+                <div class="tab-content active" id="wow">
+                    <h2 class="text-2xl font-bold mb-6 text-cyan-300">WOW
+                        Gradients</h2>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center gradient-wow-vortex animated-gradient-base">Vortex</div>
+                            <button onclick="copyClass('gradient-wow-vortex')"
+                                class="absolute bottom-3 right-3 text-xs bg-black bg-opacity-60 text-white px-3 py-1 rounded-lg hover:bg-opacity-80 transition-all duration-200"
+                                aria-label="Copy Vortex gradient class">Copy
+                                Class</button>
+                        </div>
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer bg-[linear-gradient(120deg,_#f6d365,_#fda085,_#a1c4fd,_#c2e9fb)] bg-[length:500%_500%] animate-[wowLumina_15s_ease-in-out_infinite] backdrop-blur-md">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white">Lumina</div>
+                            <button onclick="copyClass('gradient-wow-lumina')"
+                                class="absolute bottom-3 right-3 text-xs bg-black bg-opacity-60 text-white px-3 py-1 rounded-lg hover:bg-opacity-80 transition-all duration-200"
+                                aria-label="Copy Lumina gradient class">Copy
+                                Class</button>
+                        </div>
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer bg-[radial-gradient(circle_at_center,_#ff9a9e,_#fad0c4,_#fbc2eb,_#a18cd1)] bg-[length:400%_400%] animate-[wowPulsewave_12s_ease-in-out_infinite]">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white">Pulsewave</div>
+                            <button
+                                onclick="copyClass('gradient-wow-pulsewave')"
+                                class="absolute bottom-3 right-3 text-xs bg-black bg-opacity-60 text-white px-3 py-1 rounded-lg hover:bg-opacity-80 transition-all duration-200"
+                                aria-label="Copy Pulsewave gradient class">Copy
+                                Class</button>
+                        </div>
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center stripe-gradient">Vortex</div>
+                            <button onclick="copyClass('gradient-wow-vortex')"
+                                class="absolute bottom-3 right-3 text-xs bg-black bg-opacity-60 text-white px-3 py-1 rounded-lg hover:bg-opacity-80 transition-all duration-200"
+                                aria-label="Copy Vortex gradient class">Copy
+                                Class</button>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-pulse">pulse</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-sweep">sweep</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-flow">flow</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-glow">glow</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-mesh">mesh</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-rainbow">rainbow</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-waves">waves</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-diagonal">diagonal</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-fade-loop">loop</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-rotate">rotate</div>
+                        </div>
+
+                        <div
+                            class="gradient-card relative h-48 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                            <div
+                                class="w-full h-full flex items-center justify-center cw__grad-stripes">stripes</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Other Tabs -->
+                <div class="tab-content hidden" id="hud">
+                    <h2 class="text-2xl font-bold mb-6 text-cyan-300">HUD
+                        Gradients</h2>
+                    <p class="text-gray-400">Coming soon...</p>
+                </div>
+                <div class="tab-content hidden" id="magic">
+                    <h2 class="text-2xl font-bold mb-6 text-cyan-300">Magic
+                        Gradients</h2>
+                    <p class="text-gray-400">Coming soon...</p>
+                </div>
+                <div class="tab-content hidden" id="retro">
+                    <h2 class="text-2xl font-bold mb-6 text-cyan-300">Retro
+                        Gradients</h2>
+                    <p class="text-gray-400">Coming soon...</p>
+                </div>
+                <div class="tab-content hidden" id="cyberpunk">
+                    <h2 class="text-2xl font-bold mb-6 text-cyan-300">Cyberpunk
+                        Gradients</h2>
+                    <p class="text-gray-400">Coming soon...</p>
+                </div>
+            </main>
         </div>
 
-        <div id="hero-gradient" class="gradient-container">
-            Awesome Hero Section
-        </div>
-
-        <div id="secondary-gradient" class="gradient-container"
-            style="height: 150px;">
-            Another Animated Background
-        </div>
-
-        <div id="fast-gradient" class="gradient-container"
-            style="height: 100px;">
-            Faster Animation!
-        </div>
-
-        <script src="../src/gradient-library.js"></script>
-
+        <!-- Script -->
         <script>
-        // Initialize the first gradient on the 'hero-gradient' element
-        AnimatedGradientJS.init({
-            target: 'hero-gradient',
-            colors: ['#29323c', '#485563', '#80d3fe', '#7ea0c4'], // Example: Grey-blue to light blue
-            speed: '10s',
-            direction: 'to right',
-            size: '300%',
-            timingFunction: 'ease-in-out'
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Tab switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('bg-gray-700', 'text-white', 'active'));
+                contents.forEach(c => c.classList.add('hidden'));
+                tab.classList.add('bg-gray-700', 'text-white', 'active');
+                document.getElementById(tab.dataset.tab).classList.remove('hidden');
+            });
         });
 
-        // Initialize a second gradient on the 'secondary-gradient' element
-        AnimatedGradientJS.init({
-            target: 'secondary-gradient',
-            colors: ['#FF6B6B', '#556270'], // Example: Red to dark grey
-            speed: '5s',
-            direction: '45deg', // Diagonal
-            size: '200%',
-            timingFunction: 'linear'
-        });
+        // Copy class to clipboard
+        function copyClass(className) {
+            navigator.clipboard.writeText(className).then(() => {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-4 right-4 bg-cyan-600 text-white px-4 py-2 rounded-lg shadow-lg';
+                toast.textContent = `Class "${className}" copied to clipboard`;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            });
+        }
 
-        // Initialize a third, faster gradient
-        AnimatedGradientJS.init({
-            target: 'fast-gradient',
-            colors: ['#ADD100', '#7B920A', '#B3FFAB', '#12FFF7'], // Greenish tones
-            speed: '10s', // Much faster
-            direction: 'to right',
-            size: '500%' // Even larger size for more movement
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            const isDark = body.classList.contains('dark-mode');
+            themeToggle.querySelector('svg').innerHTML = isDark
+                ? '<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />'
+                : '<path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />';
         });
-
-        // You could even use an HTMLElement directly if you have it
-        // const myDiv = document.querySelector('.some-class');
-        // if (myDiv) {
-        //     AnimatedGradientJS.init({
-        //         target: myDiv,
-        //         colors: ['#eecda3', '#ef629f']
-        //     });
-        // }
     </script>
     </body>
 </html>

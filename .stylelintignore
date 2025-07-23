@@ -1,0 +1,9 @@
+# .stylelintignore
+node_modules
+dist
+build
+
+# .prettierignore
+node_modules
+dist
+build
