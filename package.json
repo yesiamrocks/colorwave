@@ -5,13 +5,17 @@
   "style": "dist/colorwave.css",
   "type": "commonjs",
   "scripts": {
-    "build:css": "postcss src/cw__index.css -o dist/colorwave.css",
-  "build:css:min": "MINIFY=true postcss src/cw__index.css -o dist/colorwave.min.css",
+  "build:css:gradient": "cross-env PREFIX=grad postcss src/cw__gradient.css -o dist/cw__gradient.prefixed.css",
+  "build:css:animation": "cross-env PREFIX=anim postcss src/cw__animation.css -o dist/cw__animation.prefixed.css",
+  "build:css:combine": "type dist\\cw__gradient.prefixed.css dist\\cw__animation.prefixed.css > dist\\colorwave.css",
+  "build:css:min": "cross-env MINIFY=true postcss dist/colorwave.css -o dist/colorwave.min.css",
+  "build:css": "npm run build:css:gradient && npm run build:css:animation && npm run build:css:combine",
   "build": "npm run build:css && npm run build:css:min",
-    "lint:css": "stylelint '**/*.css'",
-    "format": "prettier --write ."
-  },
-
+  "build:css:clean": "del dist\\cw__gradient.prefixed.css dist\\cw__animation.prefixed.css",
+"build": "npm run build:css && npm run build:css:min && npm run build:css:clean",
+  "lint:css": "stylelint '**/*.css'",
+  "format": "prettier --write ."
+},
   "keywords": [
     "gradient",
     "animation",
@@ -37,12 +41,13 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
     "cssnano": "^7.1.0",
     "postcss": "^8.5.6",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^16.1.1",
     "prettier": "^3.2.5",
-    "stylelint": "^14.16.1",
+    "stylelint": "^15.10.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard": "^34.0.0"
   },
@@ -50,5 +55,8 @@
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "dependencies": {
+    "postcss-prefix-selector": "^2.1.1"
+  }
 }
